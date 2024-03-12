@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "repraxis"
+description = "An in-memory logic database solution for games, based on Versu's Praxis language."
+authors = [{ name = "Shi Johnson-Bey", email = "shijbey@gmail.com" }]
+readme = "README.md"
+dynamic = ["version"]
+requires-python = ">=3.9"
+keywords = [
+    "database",
+    "logic programming",
+    "praxis",
+    "versu",
+    "exclusion logic",
+    "games",
+]
+license = { file = "LICENSE.md" }
+classifiers = [
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Games/Entertainment :: Simulation",
+    "Topic :: Sociology",
+    "Topic :: Software Development :: Libraries",
+    "Typing :: Typed",
+]
+
+[project.optional-dependencies]
+development = ["isort", "black", "black[d]", "build", "pytest", "pytest-cov"]
+
+[project.urls]
+Homepage = "https://github.com/ShiJbey/RePraxis"
+# Documentation = "https://readthedocs.org"
+# Repository = "https://github.com/me/spam.git"
+Issues = "https://github.com/ShiJbey/RePraxis/issues"
+# Changelog = "https://github.com/me/spam/blob/master/CHANGELOG.md"
+
+[tool.setuptools.dynamic]
+version = { attr = "repraxis.VERSION" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 88
+
+[tool.isort]
+profile = "black"
+default_section = "THIRDPARTY"
+known_first_party = "repraxis"
+src_paths = ["src/repraxis", "tests"]
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+testpaths = ["tests"]
+
+[tool.pyright]
+reportMissingTypeStubs = "none"
