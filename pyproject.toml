@@ -38,11 +38,11 @@ classifiers = [
 development = ["isort", "black", "black[d]", "build", "pytest", "pytest-cov"]
 
 [project.urls]
-Homepage = "https://github.com/ShiJbey/RePraxis"
-# Documentation = "https://readthedocs.org"
-# Repository = "https://github.com/me/spam.git"
-Issues = "https://github.com/ShiJbey/RePraxis/issues"
-# Changelog = "https://github.com/me/spam/blob/master/CHANGELOG.md"
+Homepage = "https://github.com/ShiJbey/RePraxisPy"
+Documentation = "https://github.com/ShiJbey/RePraxisPy/blob/main/README.md"
+Repository = "https://github.com/ShiJbey/RePraxisPy.git"
+Issues = "https://github.com/ShiJbey/RePraxisPy/issues"
+Changelog = "https://github.com/ShiJbey/RePraxisPy/blob/main/CHANGELOG.md"
 
 [tool.setuptools.dynamic]
 version = { attr = "repraxis.VERSION" }
