@@ -92,7 +92,7 @@ class FloatNode(Node[float]):
     """A node containing a floating point value."""
 
     def __init__(self, value: float, cardinality: NodeCardinality) -> None:
-        super().__init__(f"{value:.3E}", value, cardinality)
+        super().__init__(f"[{value:.3}]", value, cardinality)
         self._node_type = NodeType.FLOAT
 
     def equal_to(self, other: INode) -> bool:

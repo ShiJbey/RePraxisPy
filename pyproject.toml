@@ -45,7 +45,7 @@ Issues = "https://github.com/ShiJbey/RePraxisPy/issues"
 Changelog = "https://github.com/ShiJbey/RePraxisPy/blob/main/CHANGELOG.md"
 
 [tool.setuptools.dynamic]
-version = { attr = "repraxis.VERSION" }
+version = { attr = "repraxis.__version__" }
 
 [tool.setuptools.packages.find]
 where = ["src"]

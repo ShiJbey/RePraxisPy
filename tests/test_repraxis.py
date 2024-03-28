@@ -237,3 +237,75 @@ def test_empty_query(db: RePraxisDatabase):
     result = DBQuery().run(db)
 
     assert result.success is True
+
+
+def test_float_nodes():
+    db = RePraxisDatabase()
+
+    db.insert("katara.combat_skill![43.6]")
+
+    assert db.assert_statement("katara.combat_skill![43.6]")
+
+    query = DBQuery(["katara.combat_skill!?x"])
+
+    result = query.run(db)
+
+    assert result.success
+    assert len(result.bindings) == 1
+    assert result.bindings[0]["?x"] == 43.6
+
+    db.insert("katara.combat_skill![79.2]")
+
+    assert db.assert_statement("katara.combat_skill![79.2]")
+
+    query = DBQuery(["katara.combat_skill!?x"])
+
+    result = query.run(db)
+
+    assert result.success
+    assert len(result.bindings) == 1
+    assert result.bindings[0]["?x"] == 79.2
+
+
+def test_int_nodes():
+    db = RePraxisDatabase()
+
+    db.insert("katara.combat_skill!43")
+
+    assert db.assert_statement("katara.combat_skill![43]")
+
+    query = DBQuery(["katara.combat_skill!?x"])
+
+    result = query.run(db)
+
+    assert result.success
+    assert len(result.bindings) == 1
+    assert result.bindings[0]["?x"] == 43
+
+    db.insert("katara.combat_skill!79")
+
+    assert db.assert_statement("katara.combat_skill![79]")
+
+    query = DBQuery(["katara.combat_skill!?x"])
+
+    result = query.run(db)
+
+    assert result.success
+    assert len(result.bindings) == 1
+    assert result.bindings[0]["?x"] == 79
+
+
+def test_symbol_nodes():
+    db = RePraxisDatabase()
+
+    db.insert("korra.likes.[asami]")
+
+    assert db.assert_statement("korra.likes.asami")
+
+    query = DBQuery(["korra.likes.?x"])
+
+    result = query.run(db)
+
+    assert result.success
+    assert len(result.bindings) == 1
+    assert result.bindings[0]["?x"] == "asami"

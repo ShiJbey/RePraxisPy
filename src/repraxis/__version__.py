@@ -1,8 +1,0 @@
-"""RePraxis version information.
-
-"""
-
-MAJOR_VERSION = 1
-MINOR_VERSION = 3
-PATCH_VERSION = 1
-VERSION = f"{MAJOR_VERSION}.{MINOR_VERSION}.{PATCH_VERSION}"

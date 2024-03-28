@@ -9,9 +9,12 @@ to store information.
 
 """
 
-from repraxis.__version__ import VERSION
 from repraxis.database import RePraxisDatabase
+from repraxis.query import DBQuery
 
-# from repraxis.query
+MAJOR_VERSION = 1
+MINOR_VERSION = 4
+PATCH_VERSION = 0
+__version__ = f"{MAJOR_VERSION}.{MINOR_VERSION}.{PATCH_VERSION}"
 
-__all__ = ["VERSION", "RePraxisDatabase"]
+__all__ = ["RePraxisDatabase", "DBQuery"]

@@ -55,9 +55,16 @@ def parse_sentence(sentence: str) -> list[INode]:
     nodes: list[INode] = []
 
     current_token: str = ""
+    processing_literal = False
 
     for char in sentence:
-        if char == "!" or char == ".":
+        if char == "[":
+            processing_literal = True
+
+        elif char == "]":
+            processing_literal = False
+
+        elif (char == "!" or char == ".") and not processing_literal:
             cardinality = NodeCardinality.ONE if char == "!" else NodeCardinality.MANY
 
             nodes.append(node_from_token(current_token, cardinality))
@@ -65,6 +72,9 @@ def parse_sentence(sentence: str) -> list[INode]:
             current_token = ""
         else:
             current_token += char
+
+    if processing_literal:
+        raise ValueError(f"Could not find closing ']' for value in: {sentence!r}")
 
     nodes.append(node_from_token(current_token, NodeCardinality.MANY))
 
