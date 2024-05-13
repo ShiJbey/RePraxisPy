@@ -6,7 +6,7 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 from enum import Enum, auto
-from typing import Generic, Iterable, Optional, Protocol, TypeVar
+from typing import Generic, Mapping, Optional, Protocol, TypeVar
 
 
 class NodeType(Enum):
@@ -52,7 +52,7 @@ class INode(Protocol):
 
     @property
     @abstractmethod
-    def children(self) -> Iterable[INode]:
+    def children(self) -> Mapping[str, INode]:
         """The children of the node."""
 
         raise NotImplementedError()
@@ -204,10 +204,10 @@ class Node(ABC, Generic[_T]):
         return self._cardinality
 
     @property
-    def children(self) -> Iterable[INode]:
+    def children(self) -> Mapping[str, INode]:
         """The children of the node."""
 
-        return self._children.values()
+        return self._children
 
     @property
     def parent(self) -> Optional[INode]:

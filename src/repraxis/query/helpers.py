@@ -22,7 +22,7 @@ def unify(database: RePraxisDatabase, sentence: str) -> list[dict[str, INode]]:
         next_unified: list[QueryBindingContext] = []
 
         for entry in unified:
-            for child in entry.sub_tree.children:
+            for child in entry.sub_tree.children.values():
                 if token.node_type == NodeType.VARIABLE:
                     unification = QueryBindingContext(
                         child, {key: value for key, value in entry.bindings.items()}

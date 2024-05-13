@@ -81,30 +81,32 @@ def parse_sentence(sentence: str) -> list[INode]:
     return nodes
 
 
+def _try_parse_int(token: str) -> Optional[int]:
+    """Try to parse a string to an integer."""
+    try:
+        return int(token)
+    except ValueError:
+        return None
+
+
+def _try_parse_float(token: str) -> Optional[float]:
+    """Try to parse a string to a float."""
+    try:
+        return float(token)
+    except ValueError:
+        return None
+
+
 def node_from_token(token: str, cardinality: NodeCardinality) -> INode:
     """Create a new node from a given string token."""
-
-    def try_parse_int(token: str) -> Optional[int]:
-        """Try to parse a string to an integer."""
-        try:
-            return int(token)
-        except ValueError:
-            return None
-
-    def try_parse_float(token: str) -> Optional[float]:
-        """Try to parse a string to a float."""
-        try:
-            return float(token)
-        except ValueError:
-            return None
 
     if token[0] == "?":
         return VariableNode(token, cardinality)
 
-    if isinstance(value := try_parse_int(token), int):
+    if value := _try_parse_int(token):
         return IntNode(value, cardinality)
 
-    if isinstance(value := try_parse_float(token), float):
+    if value := _try_parse_float(token):
         return FloatNode(value, cardinality)
 
     return SymbolNode(token, cardinality)
