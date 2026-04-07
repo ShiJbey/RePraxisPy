@@ -1,4 +1,7 @@
-# Re:Praxis - Python Port of RePraxis
+# Re:Praxis - Python Port of RePraxis (Deprecated)
+
+> [!WARNING]
+> This repository is deprecated and is no longer maintained or supported (April 7, 2026)
 
 This repo contains the Python port of [Re:Praxis](https://github.com/ShiJbey/RePraxis). RePraxis is an in-memory database solution for games and applications. It is based on the Praxis exclusion logic language used in the [Versu Engine](https://versu.com/). I reimplemented and ported it to C# and Python to facilitate declarative queries in social simulation projects.
 
